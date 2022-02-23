@@ -65,9 +65,22 @@ def unidades(m):
             color_map[node] = 'yellow'
     nx.draw(G, node_color=color_map.values(), with_labels=True)
 
+def divisores_de_cero(m):
+    """ m: int, modulo"""
+    G = star_Z_m(m)
+    color_map = {' . ':"gray"}
+    for node in G:
+        color_map[node] = "gray"
+    divisor = nt.divisors(m)[1]
+    color_map[divisor] = "yellow"
+    color_map[m // divisor] = "yellow"
+
+    nx.draw(G, node_color=color_map.values(), with_labels=True)
+
 # multiplica_clases(17,7,8)
 # multiplica_clases(7, 8, 17)
 
-unidades(101)
+# unidades(101)
+# divisores_de_cero(16)
 
 plt.show()
